@@ -180,8 +180,10 @@ const styles = StyleSheet.create({
   },
   languageButton: {
     position: 'absolute',
-    top: 50,
+    top: 60,
     right: 20,
     left: 'auto',
+    backgroundColor: "#f0f0f0",
+    padding: 10
   },
 });

@@ -39,6 +39,6 @@
 ## Notes
 
 - Implemented globlization for Login form only
-- We have 
+- I did not spent much time on design 
 
 
