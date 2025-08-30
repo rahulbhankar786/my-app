@@ -37,6 +37,10 @@
     - type.d.ts // type container
 ```
 
+## video link
+
+- https://drive.google.com/file/d/1I7vCA9zDDluFcU9gJ_LUogq-MOJ4npi4/view?usp=sharing
+
 ## Notes
 
 - Implemented globlization for Login form only
