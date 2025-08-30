@@ -1,9 +1,11 @@
-export default function debounce(func: (...args: any) => void, delay: number) {
-    let timeoutId: NodeJS.Timeout;
-    return function(...args: any) {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-            func(args);
-        }, delay);
-    };
+export default function debounce(func: Function, delay: number) {
+  let timeoutId: any;
+  return (...args: any) => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
 }

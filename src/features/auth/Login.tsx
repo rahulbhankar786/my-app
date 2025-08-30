@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -26,6 +26,22 @@ const LoginScreen = () => {
   const [errors, setErrors] = useState<ErrorsType>({});
 
   const navigation = useNavigation();
+
+  useEffect(() => {
+    (async () => {
+      const isLoggedIn = await localStorage().getItem(storageKey.isLoggedIn);
+      if(isLoggedIn){
+      navigation.dispatch(
+          CommonActions.reset({
+            index: 0, 
+            routes: [
+              { name: 'HomeScreen' }, 
+            ],
+          })
+        ); 
+      }
+    })()
+  })
 
   const validate = () => {
     let valid = true;

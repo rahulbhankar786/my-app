@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { TextInput, StyleSheet } from "react-native";
 import { SCREEN_HEIGHT } from "@myapp/utils/utils";
 import { useEventsStore } from "@myapp/hooks/useEventStore";
@@ -9,18 +9,23 @@ const SearchBar = () => {
   const [search, setSearch] = useState("");
   const fetchEvents = useEventsStore((state: any) => state.fetchEvents);
 
-  useEffect(() => {
-    debounce(() => {
-     if (search) fetchEvents({ keyword: search })
-    }, 1000)();
-  }, [search, fetchEvents]);
+    const debouncedSearch = useMemo(
+    () =>
+      debounce((search: string) => {
+        fetchEvents({ keyword: search });
+      }, 500),
+    []
+  );
     
   return (<TextInput
         style={styles.input}
         placeholder="Search here..."
         placeholderTextColor="#888"
         value={search}
-        onChangeText={setSearch}
+        onChangeText={(value: string) => {
+          setSearch(value);
+          debouncedSearch(value);
+        }}
         autoCorrect={false}
       />)
 }
