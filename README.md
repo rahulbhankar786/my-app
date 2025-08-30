@@ -25,7 +25,7 @@
   ```
 
 ## Folder Structure
-  -src
+  ```-src
     - App.tsx // Entry point of the app
     - assets 
     - components
@@ -35,6 +35,7 @@
     - navigation // navigatore
     - utils // utils functions
     - type.d.ts // type container
+```
 
 ## Notes
 
