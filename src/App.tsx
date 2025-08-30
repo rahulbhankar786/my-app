@@ -2,10 +2,16 @@ import { Assets as NavigationAssets } from '@react-navigation/elements';
 import { DarkTheme, DefaultTheme } from '@react-navigation/native';
 import { Asset } from 'expo-asset';
 import { createURL } from 'expo-linking';
-import * as SplashScreen from 'expo-splash-screen';
-import * as React from 'react';
-import { useColorScheme } from 'react-native';
+import { hideAsync, preventAutoHideAsync } from 'expo-splash-screen';
+import React, { useEffect } from 'react';
+import { I18nManager, useColorScheme } from 'react-native';
 import { Navigation } from './navigation';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import "@myapp/i18n"; 
+import i18n from '@myapp/i18n/index';
+import { storageKey } from './utils/constants';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 Asset.loadAsync([
   ...NavigationAssets,
@@ -13,25 +19,47 @@ Asset.loadAsync([
   require('./assets/bell.png'),
 ]);
 
-SplashScreen.preventAutoHideAsync();
+preventAutoHideAsync();
 
 const prefix = createURL('/');
-
-export function App() {
+export const App = () =>{
   const colorScheme = useColorScheme();
 
   const theme = colorScheme === 'dark' ? DarkTheme : DefaultTheme
 
+  const setLanguage = async () => {
+    AsyncStorage.getItem(storageKey.language).then((savedLanguage) => {
+      if (i18n.dir() === "rtl") {
+        I18nManager.allowRTL(true);
+        I18nManager.forceRTL(true);
+      } else {
+        I18nManager.allowRTL(false);
+        I18nManager.forceRTL(false);
+      }
+      if(!savedLanguage) {
+        i18n.changeLanguage('en');
+      } else {
+        i18n.changeLanguage(savedLanguage);
+      }
+    });
+  }
+
+  useEffect(() => {
+    setLanguage();
+  }, []);
+
   return (
-    <Navigation
-      theme={theme}
-      linking={{
-        enabled: 'auto',
-        prefixes: [prefix],
-      }}
-      onReady={() => {
-        SplashScreen.hideAsync();
-      }}
-    />
+    <GestureHandlerRootView>
+      <Navigation
+        theme={theme}
+        linking={{
+          enabled: 'auto',
+          prefixes: [prefix],
+        }}
+        onReady={() => {
+          hideAsync();
+        }}
+      />
+    </GestureHandlerRootView>
   );
 }

@@ -1,0 +1,10 @@
+{
+    "translation": {
+        "login": "Login",
+        "signup": "Sign Up",
+        "toggle_language": "Toggle Language",
+        "no_account_signup":"Don’t have an account? Sign Up",
+        "email": "Email",
+        "password": "Password"
+    }
+} 

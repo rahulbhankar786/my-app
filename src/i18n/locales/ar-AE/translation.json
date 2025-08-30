@@ -1,0 +1,10 @@
+{
+    "translation": {
+        "login": "تسجيل الدخول",
+        "signup": "اشتراك",
+        "toggle_language": "تبديل اللغة",
+        "no_account_signup":"ليس لديك حساب؟ اشترك",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور"
+    }
+}

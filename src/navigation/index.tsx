@@ -1,96 +1,55 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HeaderButton, Text } from '@react-navigation/elements';
+import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 import {
   createStaticNavigation,
   StaticParamList,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Image } from 'react-native';
-import bell from '../assets/bell.png';
-import newspaper from '../assets/newspaper.png';
-import { Home } from './screens/Home';
-import { Profile } from './screens/Profile';
-import { Settings } from './screens/Settings';
-import { Updates } from './screens/Updates';
-import { NotFound } from './screens/NotFound';
-
-const HomeTabs = createBottomTabNavigator({
-  screens: {
-    Home: {
-      screen: Home,
-      options: {
-        title: 'Feed',
-        tabBarIcon: ({ color, size }) => (
-          <Image
-            source={newspaper}
-            tintColor={color}
-            style={{
-              width: size,
-              height: size,
-            }}
-          />
-        ),
-      },
-    },
-    Updates: {
-      screen: Updates,
-      options: {
-        tabBarIcon: ({ color, size }) => (
-          <Image
-            source={bell}
-            tintColor={color}
-            style={{
-              width: size,
-              height: size,
-            }}
-          />
-        ),
-      },
-    },
-  },
-});
+import HomeScreen from '@myapp/features/home/HomeScreen';
+import LoginScreen from '@myapp/features/auth/Login';
+import Signup from '@myapp/features/auth/Signup';
+import Profile from '@myapp/features/auth/Profile';
+import Details from '@myapp/features/home/Details';
+import HomeHeaderRight from '@myapp/components/HomeHeaderRight';
 
 const RootStack = createNativeStackNavigator({
   screens: {
-    HomeTabs: {
-      screen: HomeTabs,
+    Login: {
+      screen: LoginScreen,
       options: {
-        title: 'Home',
+        title: 'Login',
         headerShown: false,
       },
     },
-    Profile: {
-      screen: Profile,
-      linking: {
-        path: ':user(@[a-zA-Z0-9-_]+)',
-        parse: {
-          user: (value) => value.replace(/^@/, ''),
+    Signupscreen: {
+        screen: Signup,
+        options: {
+          headerShown: false,
         },
-        stringify: {
-          user: (value) => `@${value}`,
-        },
-      },
     },
-    Settings: {
-      screen: Settings,
-      options: ({ navigation }) => ({
-        presentation: 'modal',
-        headerRight: () => (
-          <HeaderButton onPress={navigation.goBack}>
-            <Text>Close</Text>
-          </HeaderButton>
-        ),
-      }),
-    },
-    NotFound: {
-      screen: NotFound,
+    HomeScreen: {
+      screen: HomeScreen,
       options: {
-        title: '404',
-      },
-      linking: {
-        path: '*',
+        title: 'Home',
+        headerShown: true,
+        headerRight: HomeHeaderRight,
+        headerBackVisible: false
       },
     },
+    ProfileScreen: {
+      screen: Profile,
+      options: {
+        title: 'Profile',
+        headerShown: true,
+      },
+    },
+    DetailsScreen: {
+      screen: Details,
+      options: {
+        title: 'Details',
+        headerShown: true,
+      },
+    }
   },
 });
 
