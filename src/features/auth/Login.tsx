@@ -28,6 +28,7 @@ const LoginScreen = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
+    // if user is already login navigate to Home screen
     (async () => {
       const isLoggedIn = await localStorage().getItem(storageKey.isLoggedIn);
       if(isLoggedIn){

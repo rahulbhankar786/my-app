@@ -316,7 +316,7 @@ PODS:
   - hermes-engine (0.79.5):
     - hermes-engine/Pre-built (= 0.79.5)
   - hermes-engine/Pre-built (0.79.5)
-  - NitroModules (0.29.0):
+  - NitroModules (0.29.2):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1665,9 +1665,9 @@ PODS:
     - React-jsiexecutor
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
-  - react-native-config (1.5.7):
-    - react-native-config/App (= 1.5.7)
-  - react-native-config/App (1.5.7):
+  - react-native-config (1.5.8):
+    - react-native-config/App (= 1.5.8)
+  - react-native-config/App (1.5.8):
     - React-Core
   - react-native-restart (0.0.27):
     - React-Core
@@ -2515,7 +2515,7 @@ SPEC CHECKSUMS:
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
   glog: 5683914934d5b6e4240e497e0f4a3b42d1854183
   hermes-engine: f03b0e06d3882d71e67e45b073bb827da1a21aae
-  NitroModules: 17f65fd608c412d137317371b8137101534e14d3
+  NitroModules: dd0e4e1552da29f2f5f264da42f0c08824895abc
   RCT-Folly: 36fe2295e44b10d831836cc0d1daec5f8abcf809
   RCTDeprecation: 5f638f65935e273753b1f31a365db6a8d6dc53b5
   RCTRequired: 8b46a520ea9071e2bc47d474aa9ca31b4a935bd8
@@ -2547,7 +2547,7 @@ SPEC CHECKSUMS:
   React-logger: e6e6164f1753e46d1b7e2c8f0949cd7937eaf31b
   React-Mapbuffer: 5b4959cbd91e7e8fae42ab0f4b7c25b86fd139a1
   React-microtasksnativemodule: 1695ab137281dd03de967b7bbeb4e392601f6432
-  react-native-config: b2afdf5efe0848b5f9d4cb8b5a62d90b1385a722
+  react-native-config: 0f59d92a17f0d0a6a430ea248fad32438b1d9454
   react-native-restart: 7595693413fe3ca15893702f2c8306c62a708162
   react-native-safe-area-context: 00d03dc688ba86664be66f9e3f203fc7d747d899
   React-NativeModulesApple: 3ecc647742d33ad617bd2805902e3f91f2b3008f

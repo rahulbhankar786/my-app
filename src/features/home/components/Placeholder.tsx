@@ -2,8 +2,8 @@ import React from "react";
 import { View } from "react-native";
 import { SCREEN_HEIGHT } from "@myapp/utils/utils";
 
-const Placeholder = () => {
-  {Array.from({ length: 5 }).map((_, index) => (
+const Placeholder = () => 
+  Array.from({ length: 5 }).map((_, index) => (
     <React.Fragment key={`placeholder-${index}`}>
       <View
         style={{
@@ -15,7 +15,6 @@ const Placeholder = () => {
         }}
       />
     </React.Fragment>
-  ))}
-}
+  ))
 
 export default Placeholder;

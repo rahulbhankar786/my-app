@@ -13,7 +13,6 @@ export const useEventsStore = create((set: any, get: any) => ({
 
   fetchEvents: async (params: any = {}) => {
     set({ loading: true, error: null });
-
     try {
       const { page } = get();
       const response = await axios.get(`${Config.BASE_URL}/events.json?apikey=${Config.API_KEY}`,{
