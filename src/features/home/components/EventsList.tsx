@@ -1,14 +1,18 @@
 import { useEvents } from "@myapp/hooks/useEvents";
-import { FlatList } from "react-native";
+import { FlatList, Text } from "react-native";
 import EventItem from "./EventItem";
 import { EventItem as EventItemType } from "types";
 import Placeholder from "./Placeholder";
+import { useCallback } from "react";
 
 const EventsList = () => {
     const {
     events, nextPage, loading
     } = useEvents();
-    
+
+    const renderItem = useCallback(({ item, index }: { item: EventItemType; index: number; }) => 
+        <EventItem event={item} index={index}/>,
+    [])
     return (
         <FlatList
             style={{ width: '90%' }}
@@ -21,7 +25,7 @@ const EventsList = () => {
             }}
             onEndReachedThreshold={0.9}
             data={events}
-            renderItem={({ item, index }: { item: EventItemType; index: number; }) => <EventItem event={item} index={index}/>}
+            renderItem={renderItem}
             keyExtractor={(item) => item.id}
         />
     );
